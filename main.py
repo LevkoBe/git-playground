@@ -40,6 +40,6 @@ while not is_game_over():
         print(f"Oops :( No such word, you have {ERRORS_TO_LOSE - errors} lives more")
     if guesses:
         if len(guesses) == 1:
-            print(f"Remember, you have used a word {guesses}")
+            print(f"Remember, you have used a word {str(guesses)[1:-1]}")
         elif len(guesses) > 1:
-            print(f"Remember, you have used such words: {guesses}")
+            print(f"Remember, you have used such words: {str(guesses)[1:-1]}")

@@ -12,12 +12,9 @@ def is_game_over():
 
 def guess_is_valid(candidate):
     for letter in candidate:
-        if letter not in word:
-            print(f"You can not use letter {letter}")
-            return False
         count = word.count(letter)
         if count < candidate.count(letter):
-            print(f"You can use letter {letter} only {count} times")
+            print(f"You can use letter {letter} only {count} time(s)")
             return False
     return True
 

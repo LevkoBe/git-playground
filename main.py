@@ -44,7 +44,10 @@ while not is_game_over():
     if not guess_is_valid(guess):
         continue
 
-    if guess in full_list:
+    if guess in guesses:
+        errors += 1
+        print(f"This word is already used! You have {ERRORS_TO_LOSE - errors} lives more")
+    elif guess in full_list:
         guessed += 1
         guesses.append(guess)
         if guessed == WORDS_TO_WIN:

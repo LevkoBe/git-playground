@@ -9,6 +9,13 @@ def congratulate_user(congratulation_word):
     print(f"Your words are: {guesses}")
 
 
+def hint():
+    for hint_word in full_list:
+        if guess_is_valid(hint_word) and hint_word not in guesses:
+            print(hint_word)
+            break
+
+
 def is_game_over():
     return guessed == WORDS_TO_WIN or errors == ERRORS_TO_LOSE
 
@@ -17,7 +24,8 @@ def guess_is_valid(candidate):
     for letter in candidate:
         count = word.count(letter)
         if count < candidate.count(letter):
-            print(f"You can use letter {letter} only {count} time(s)")
+            if guess != 'hint':
+                print(f"You can use letter {letter} only {count} time(s)")
             return False
     return True
 
@@ -40,6 +48,10 @@ print(f"Your word is '{word}'")
 
 while not is_game_over():
     guess = input("Your next take: ")
+
+    if guess == 'hint':
+        hint()
+        continue
 
     if not guess_is_valid(guess):
         continue
